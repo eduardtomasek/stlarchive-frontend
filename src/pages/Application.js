@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router-dom"
 
 import AnonymousImage from '../assets/img/anon.svg'
 
-
 const ApplicationPage = () => {
     return <div>
         Authorized area only (<Link to="/">Homepage</Link>)
