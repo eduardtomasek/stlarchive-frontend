@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Routes, Route } from "react-router-dom"
+import { Helmet, HelmetProvider } from "react-helmet-async"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ApplicationPage from './pages/Application'
+import LandingPage from './pages/Landing'
+import ProjectsPage from './pages/Projects'
+import LoginPage from './pages/Login'
+import RequireAuth from './components/RequireAuth'
+
+function App () {
+    const [token, setToken] = useState()
+    return (
+        <HelmetProvider>
+            <div className="App">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>STL Archive</title>
+                    <link
+                        rel="stylesheet"
+                        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+                    />
+                    <link
+                        rel="stylesheet"
+                        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                    />
+                </Helmet>
+                <Routes>
+                    <Route exact path="/" element={<LandingPage />} />
+                    <Route exact path="/login" element={<LoginPage />} />
+                    <Route exact path="/app" element={<RequireAuth><ApplicationPage /></RequireAuth>}>
+                        <Route exact path='/app/projects' element={<ProjectsPage />} />
+                    </Route>
+                </Routes>
+            </div>
+        </HelmetProvider>
+    )
 }
 
-export default App;
+export default App
