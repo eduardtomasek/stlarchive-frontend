@@ -9,7 +9,6 @@ import LoginPage from './pages/Login'
 import RequireAuth from './components/RequireAuth'
 
 function App () {
-    const [token, setToken] = useState()
     return (
         <HelmetProvider>
             <div className="App">
