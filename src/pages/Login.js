@@ -40,7 +40,8 @@ const LoginPage = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    const from = location.state?.from?.pathname || "/app/projects"
+    // const from = location.state?.from?.pathname || "/app/projects"
+    const from = "/app/projects"
 
     function handleSubmit (event) {
         event.preventDefault()
